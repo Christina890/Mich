@@ -177,9 +177,15 @@ nav .container {
 }
 
 .hero-visual {
-  background: url(/image.png) no-repeat center / contain;
-  min-height: 340px;
+  width: 100%;
   border-radius: 20px;
+  object-fit: contain;
+}
+
+.hero-visual-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* --- Sections --- */
@@ -670,7 +676,7 @@ footer .footer-contact {
   }
 
   .hero-visual {
-    min-height: 200px;
+    max-height: 260px;
   }
 
   section {
