@@ -1,0 +1,10 @@
+(function(){const n=document.createElement("link").relList;if(n&&n.supports&&n.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))m(e);new MutationObserver(e=>{for(const o of e)if(o.type==="childList")for(const s of o.addedNodes)s.tagName==="LINK"&&s.rel==="modulepreload"&&m(s)}).observe(document,{childList:!0,subtree:!0});function r(e){const o={};return e.integrity&&(o.integrity=e.integrity),e.referrerPolicy&&(o.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?o.credentials="include":e.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function m(e){if(e.ep)return;e.ep=!0;const o=r(e);fetch(e.href,o)}})();const p={selectedAmount:"KES 1,000"},y=document.querySelectorAll("#amounts button"),a=document.getElementById("openDonateModal"),i=document.getElementById("closeDonateModal"),c=document.getElementById("donateModal"),d=document.getElementById("payMpesa"),l=document.getElementById("payPaypal"),u=document.getElementById("payBank");y.forEach(t=>{t.addEventListener("click",()=>{y.forEach(n=>n.classList.remove("active")),t.classList.add("active"),p.selectedAmount=t.dataset.amount??"KES 1,000"})});function v(){c&&c.classList.add("open")}function g(){c&&c.classList.remove("open")}a==null||a.addEventListener("click",v);i==null||i.addEventListener("click",g);c==null||c.addEventListener("click",t=>{t.target===c&&g()});function f(t){const{selectedAmount:n}=p,r={"M-Pesa":`Thank you for choosing to donate ${n} via M-Pesa.
+
+Paybill: 247247
+Account: MICH-${Date.now()}`,PayPal:`Thank you for choosing to donate ${n} via PayPal.
+
+You will be redirected to our secure PayPal checkout.`,"Bank Transfer":`Thank you for choosing to donate ${n} via Bank Transfer.
+
+Equity Bank
+Account: 1234567890
+Branch: Nairobi`};alert(r[t])}d==null||d.addEventListener("click",t=>{t.preventDefault(),f("M-Pesa")});l==null||l.addEventListener("click",t=>{t.preventDefault(),f("PayPal")});u==null||u.addEventListener("click",t=>{t.preventDefault(),f("Bank Transfer")});
